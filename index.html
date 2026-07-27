@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jejak Bintang — To-Do List Harian</title>
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="starfield" aria-hidden="true"></div>
+
+<main class="container">
+
+  <header class="app-header">
+    <p class="eyebrow">Misi Harian</p>
+    <h1>Jejak Bintang</h1>
+    <div class="header-meta">
+      <span id="tanggal" class="tanggal"></span>
+      <span class="dot-sep" aria-hidden="true">•</span>
+      <span id="jamSekarang" class="jam-sekarang"></span>
+    </div>
+  </header>
+
+  <section class="progress-card">
+    <div class="progress-top">
+      <div class="progress-ring-wrap">
+        <svg class="progress-ring" viewBox="0 0 120 120" aria-hidden="true">
+          <defs>
+            <linearGradient id="gradRing" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#7c5cff"/>
+              <stop offset="100%" stop-color="#ffd166"/>
+            </linearGradient>
+          </defs>
+          <circle class="progress-ring-bg" cx="60" cy="60" r="52"></circle>
+          <circle class="progress-ring-fill" id="progressRing" cx="60" cy="60" r="52" stroke="url(#gradRing)"></circle>
+        </svg>
+        <div class="progress-ring-label">
+          <span id="progressPercent">0%</span>
+        </div>
+      </div>
+
+      <div class="stat-list">
+        <div class="stat-item">
+          <span class="stat-num" id="statSelesai">0/0</span>
+          <span class="stat-label">selesai hari ini</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" id="statStreak">0</span>
+          <span class="stat-label">hari beruntun</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" id="statTerpanjang">0</span>
+          <span class="stat-label">rekor terpanjang</span>
+        </div>
+      </div>
+    </div>
+    <p id="pesanMotivasi" class="pesan-motivasi"></p>
+  </section>
+
+  <section class="trail-section" aria-label="Daftar tugas harian">
+    <ul id="taskList" class="trail-list"></ul>
+  </section>
+
+  <section class="action-row">
+    <button type="button" class="btn btn-ghost" id="btnSuara" title="Aktifkan atau matikan bunyi">🔈 Bunyi</button>
+    <button type="button" class="btn btn-ghost" id="btnReset">↺ Reset Hari Ini</button>
+    <button type="button" class="btn btn-ghost" id="btnEdit">✎ Edit Tugas</button>
+  </section>
+
+  <section class="history-section">
+    <div class="history-head">
+      <h2>Riwayat 7 Hari</h2>
+      <div class="backup-actions">
+        <button type="button" class="btn-mini" id="btnExport">Cadangkan</button>
+        <label class="btn-mini" for="importFile">Pulihkan</label>
+        <input type="file" id="importFile" accept="application/json" hidden>
+      </div>
+    </div>
+    <div class="history-chart" id="historyChart"></div>
+  </section>
+
+</main>
+
+<div id="editorModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="editorTitle">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 id="editorTitle">Edit Daftar Tugas</h2>
+      <button type="button" class="close" id="btnTutupEditor" aria-label="Tutup editor">&times;</button>
+    </div>
+    <div id="editorList" class="editor-list"></div>
+    <button type="button" class="btn-add" id="btnTambahTugas">+ Tambah Tugas</button>
+    <button type="button" class="btn-save" id="btnSimpanTugas">Simpan Perubahan</button>
+  </div>
+</div>
+
+<div id="toastCelebrate" class="toast-celebrate" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
