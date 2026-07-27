@@ -1,6 +1,7 @@
-const CACHE_NAME = 'todolist-v1';
+const CACHE_NAME = 'todolist-v2';
 const urlsToCache = [
   'index.html',
+  'todo.html',
   'manifest.json',
   'icon-192.png',
   'icon-512.png'
