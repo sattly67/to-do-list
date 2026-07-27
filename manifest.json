@@ -1,10 +1,10 @@
 {
-  "name": "To-Do List Harian",
+  "name": "To-Do List Galaksi",
   "short_name": "ToDo",
   "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#667eea",
-  "theme_color": "#667eea",
+  "background_color": "#090a0f",
+  "theme_color": "#1b2735",
   "icons": [
     {
       "src": "icon-192.png",
